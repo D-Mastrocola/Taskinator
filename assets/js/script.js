@@ -213,9 +213,12 @@ let taskStatusChangeHandler = function (event) {
   } else if (statusValue === "completed") {
     tasksCompletedEl.appendChild(taskSelected);
   }
+  console.log(taskId);
   for (var i = 0; i < tasks.length; i++) {
+    console.log(tasks[i].id === parseInt(taskId))
     if (tasks[i].id === parseInt(taskId)) {
       tasks[i].status = statusValue;
+      console.log(tasks[i].status)
     }
   }
   saveTasks();
@@ -223,6 +226,8 @@ let taskStatusChangeHandler = function (event) {
 
 let saveTasks = function () {
   localStorage.setItem("tasks", JSON.stringify(tasks));
+  console.log('saved' );
+  console.log(tasks);
 };
 
 let loadTasks = function () {
@@ -231,6 +236,7 @@ let loadTasks = function () {
   if (savedTasks) {
     for (var i = 0; i < savedTasks.length; i++) {
       // pass each task object into the `createTaskEl()` function
+      tasks.push(savedTasks[i]);
       createTaskEl(savedTasks[i]);
     }
   }
