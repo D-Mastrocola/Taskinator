@@ -1,4 +1,3 @@
-// Declaring variables
 let taskIdCounter = 0;
 let formEl = document.querySelector("#task-form");
 let tasksToDoEl = document.querySelector("#tasks-to-do");
@@ -174,7 +173,9 @@ let editTask = function (taskId) {
   document.querySelector("#save-task").textContent = "Save Task";
 
   formEl.setAttribute("data-task-id", taskId);
+
   saveTasks();
+
 };
 
 //handles deleting task element from the DOM
@@ -190,6 +191,7 @@ let deleteTask = function (taskId) {
 
   taskSelected.remove();
   saveTasks();
+
 };
 
 let taskStatusChangeHandler = function (event) {
@@ -234,6 +236,7 @@ let loadTasks = function () {
   }
 };
 loadTasks();
+
 
 formEl.addEventListener("submit", createTaskHandler);
 pageContentEl.addEventListener("click", taskButtonHandler);
